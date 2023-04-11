@@ -32,11 +32,10 @@ jobs:
       run: dotnet test --no-restore --no-build --filter Category!=Integration --verbosity normal --configuration Release -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=opencover
     - name: Package
       run: dotnet pack --no-build --configuration Release
-#
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
         name: nupkg
-        path: Library/bin/Release
+        path: Library/bin/Release/**/*.nupkg
         if-no-files-found: error
 #

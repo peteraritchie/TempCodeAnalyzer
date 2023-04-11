@@ -3,7 +3,7 @@
 - [ ] verisoning?
 - [x] build
 - [x] unit test
-- [ ] packaging
+- [x] packaging
 - [ ] release
 - [ ] delivery?*
 - [ ] acceptance*
