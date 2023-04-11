@@ -38,6 +38,6 @@ jobs:
       with:
         name: nupkg
         # not "src/" prefix, upload-artifact does not support `working-directory`
-        path: src/Library/bin/Release/Library.1.0.0.nupkg
+        path: src/Library/bin/Release/*.nupkg
         if-no-files-found: error
 #
