@@ -1,0 +1,17 @@
+name: ci
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    uses: ./.github/workflows/build-integrate.yml
+
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: do something
+      run: echo hello world
