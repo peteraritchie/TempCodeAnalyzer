@@ -18,7 +18,8 @@ jobs:
         working-directory: ./src
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
@@ -26,6 +27,15 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore --configuration Release
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-restore --no-build --filter Category!=Integration --verbosity normal --configuration Release -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=opencover
+    - name: Package
+      run: dotnet pack --no-build --verbosity normal
+#
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: release
+        path: ./Library/bin/Release/Library.1.0.0.nupkg
+#
