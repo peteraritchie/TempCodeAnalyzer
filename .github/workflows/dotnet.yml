@@ -37,6 +37,6 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: nupkg
-        path: Library/bin/Release/Library.1.0.0.nupkg
+        path: Library/bin/Release
         if-no-files-found: error
 #
