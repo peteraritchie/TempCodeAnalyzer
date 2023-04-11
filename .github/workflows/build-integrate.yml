@@ -7,8 +7,8 @@ on:
   workflow_call:
 
 jobs:
-  build:
-
+  build-and-integrate:
+    name: build and integrate
     runs-on: ubuntu-latest
     defaults:
       run:
