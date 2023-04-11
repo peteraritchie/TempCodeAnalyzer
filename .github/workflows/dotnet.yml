@@ -33,6 +33,8 @@ jobs:
     - name: Package
       run: dotnet pack --no-build --configuration Release
 #
+    - name: Debug Package
+      run: ls ./Library/bin/Release
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
