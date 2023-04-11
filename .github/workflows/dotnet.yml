@@ -33,12 +33,10 @@ jobs:
     - name: Package
       run: dotnet pack --no-build --configuration Release
 #
-    - name: Debug Package
-      run: ls ./Library/bin/Release
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
         name: release
-        path: ./Library/bin/Release/Library.1.0.0.nupkg
+        path: ./Library/bin/Release
         if-no-files-found: error
 #
