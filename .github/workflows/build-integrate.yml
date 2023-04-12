@@ -5,11 +5,17 @@ name: .NET build and integrate
 
 on:
   workflow_call:
+    outputs:
+      version:
+        description: The calculated version of the built artifacts
+        value: ${{ jobs.build-and-integrate.outputs.version }}
 
 jobs:
   build-and-integrate:
     name: build and integrate
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.bump-version.outputs.next-version }}
 
     steps:
     - name: Checkout
