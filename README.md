@@ -12,3 +12,4 @@
 - [ ] clean up (delete artifact)
 
 https://github.com/marketplace/actions/create-release
+https://github.com/marketplace/actions/publish-release
