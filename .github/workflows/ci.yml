@@ -16,4 +16,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: do something
-      run: echo "version ${{ needs.ci.outputs.version }} built.""
+      run: echo "version ${{ needs.ci.outputs.version }} built."
