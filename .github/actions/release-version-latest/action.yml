@@ -1,4 +1,4 @@
-name: 'release-version=latest'
+name: 'release-version-latest'
 description: 'Fetch the latest release version for the current repository'
 author: 'peteraritchie'
 branding:
@@ -8,7 +8,7 @@ branding:
 outputs:
   version:
     description: 'Latest release version'
-    value: ${{ steps.fetch-latest-release-version.outputs.release }}
+    value: ${{ steps.fetch-latest-release-version.outputs.version }}
 
 runs:
   using: 'composite'

@@ -14,11 +14,13 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+
     - name: get-latest-version-tag
       id: get-latest-version-tag
       uses: ./.github/actions/release-version-latest
     - name: echo latest-version-tag
       run: echo "${{ steps.get-latest-version-tag.outputs.version }}"
+
     - name: version
       id: version
       run: echo "value=1" >> $GITHUB_OUTPUT
