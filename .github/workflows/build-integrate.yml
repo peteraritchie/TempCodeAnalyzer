@@ -22,13 +22,13 @@ jobs:
       run: echo "${{ steps.get-latest-version-tag.outputs.version }}"
 
     - name: Bump release version
-      id: bump_version
+      id: bump-version
       uses: christian-draeger/increment-semantic-version@1.1.0
       with:
         current-version: "${{ steps.get-latest-version-tag.outputs.version }}"
         version-fragment: 'feature'
-    - name: Do something with your bumped release version
-      run: echo ${{ steps.bump_version.outputs.next-version }}
+#    - name: Do something with your bumped release version
+#      run: echo ${{ steps.bump-version.outputs.next-version }}
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
@@ -37,7 +37,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore src
     - name: Build
-      run: dotnet build src --no-restore --configuration Release
+      run: dotnet build src --no-restore --configuration Release /p:Version=${{ steps.bump-version.outputs.next-version }}
     - name: Test
       run: dotnet test src --no-restore --no-build --filter Category!=Integration --verbosity normal --configuration Release -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=opencover
     - name: Package
