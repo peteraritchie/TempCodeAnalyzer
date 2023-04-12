@@ -8,7 +8,7 @@
 - [ ] release (draft a release, uodate release, upload artifact)
 - [ ] delivery?*
 - [ ] acceptance*
-- [ ] publshing (release, packages)
+- [ ] publshing (release, packages, [vsix](https://github.com/cezarypiatek/VsixPublisherAction/blob/main/src/main.ts))
 - [ ] clean up (delete artifact)
 
 https://github.com/marketplace/actions/create-release
