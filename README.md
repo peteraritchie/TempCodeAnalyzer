@@ -13,3 +13,5 @@
 
 https://github.com/marketplace/actions/create-release
 https://github.com/marketplace/actions/publish-release
+
+? Force a release from dev if version tag added to main that is greater than current
