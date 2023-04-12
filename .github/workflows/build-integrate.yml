@@ -19,12 +19,9 @@ jobs:
       uses: actions/checkout@v3
     - name: version
       id: version
-      uses: zwaldowski/match-label-action@v4
-      with:
-        allowed: major, minor
-        default_match: 1.0
+      run: echo "value=1" >> $GITHUB_OUTPUT
     - name: verbose
-      run: echo "${{ steps.version.outputs.match }}"
+      run: echo "${{ steps.version.outputs.value }}"
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
