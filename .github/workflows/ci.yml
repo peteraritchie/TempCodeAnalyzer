@@ -1,5 +1,5 @@
 name: ci
-run-name: CI run for commit ${{ github.sha }} by $${{ github.actor }}
+run-name: CI run for commit ${{ github.sha }} by ${{ github.actor }}
 
 on:
   push:
