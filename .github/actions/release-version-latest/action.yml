@@ -18,7 +18,6 @@ runs:
         git fetch --tags
         git fetch --prune --unshallow || true
         export LATEST_RELEASE_VERSION=$(git describe --abbrev=0 --tags || echo "v0.1")
-        # echo "version=${LATEST_RELEASE_VERSION:1}" >> $GITHUB_OUTPUT
-        echo "version=v0.1" >> $GITHUB_OUTPUT
+        echo "version=${LATEST_RELEASE_VERSION:1}" >> $GITHUB_OUTPUT
       shell: bash
       
