@@ -15,6 +15,15 @@ jobs:
         working-directory: ./src
 
     steps:
+    - name: version
+      id: version
+      uses: zwaldowski/match-label-action@v4
+      with:
+        allowed: major, minor
+        default_match: 1.0
+    - name: verbose
+      run:
+        echo ${{ steps.version.outputs.match }}
     - name: Checkout
       uses: actions/checkout@v3
     - name: Setup .NET
