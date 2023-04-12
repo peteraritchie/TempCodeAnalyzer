@@ -20,8 +20,13 @@ jobs:
     - name: version
       id: version
       run: echo "value=1" >> $GITHUB_OUTPUT
-    - name: verbose
+    - name: echo version
       run: echo "${{ steps.version.outputs.value }}"
+    - name: Fetch latest release version
+      id: fetch-latest-release
+      uses: reloc8/action-latest-release-version@1.0.0
+    - name: echo latest release version
+      run: echo ${{ steps.fetch-latest-release.outputs.latest-release }}
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
