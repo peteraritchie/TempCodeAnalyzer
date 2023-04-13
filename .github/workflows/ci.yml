@@ -15,13 +15,24 @@ jobs:
   release:
     needs: ci
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-    - name: do something with ${{ needs.ci.outputs.version }}
-      run: echo "version ${{ needs.ci.outputs.version }} built."
-    - uses: actions/download-artifact@v3
+    - name: download version ${{ needs.ci.outputs.version }} artifacts 
+      uses: actions/download-artifact@v3
       with:
         name: nupkg-${{ github.sha }}
-    - name: dir
+    - name: get tag name
+      id: tag-name
+      run: echo "value=${LATEST_RELEASE_VERSION:1}" >> $GITHUB_OUTPUT
+    - name: tag (${{ steps.tag-name.value }})
       run: |
-        pwd
-        ls .
+        git tag ${{ steps.tag-name.value }}
+        git push origin ${{ steps.tag-name.value }}
+    - name: release
+      uses: actions/release-action@v1
+      with:
+        artifacts: "*.nupkg"
+        draft: true
+        tag: ${{ steps.tag-name.value }}
+        body: release ${{ steps.tag-name.value }}
