@@ -21,3 +21,8 @@ jobs:
     - uses: actions/download-artifact@v3
       with:
         name: nupkg-${{ github.sha }}
+    - name: dir
+      run: |
+        ls .
+        ls TempCodeAnalyzer
+        ls TempCodeAnalyzer/TempCodeAnalyzer
