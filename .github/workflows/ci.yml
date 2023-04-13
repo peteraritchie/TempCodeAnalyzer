@@ -23,6 +23,5 @@ jobs:
         name: nupkg-${{ github.sha }}
     - name: dir
       run: |
+        pwd
         ls .
-        ls TempCodeAnalyzer
-        ls TempCodeAnalyzer/TempCodeAnalyzer
