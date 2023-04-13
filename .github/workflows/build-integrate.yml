@@ -53,7 +53,7 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
-        name: nupkg
+        name: nupkg-${{ github.sha }}
         # not "src/" prefix, upload-artifact does not support `working-directory`
         path: src/Library/bin/Release/*.nupkg
         if-no-files-found: error
