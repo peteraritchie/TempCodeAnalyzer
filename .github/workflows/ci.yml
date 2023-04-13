@@ -25,6 +25,8 @@ jobs:
     - name: get tag name
       id: tag-name
       run: echo "value=v${{ needs.ci.outputs.version }}" >> $GITHUB_OUTPUT
+    - name: Checkout
+      uses: actions/checkout@v3
     - name: tag (${{ steps.tag-name.outputs.value }})
       run: |
         git tag ${{ steps.tag-name.outputs.value }}
