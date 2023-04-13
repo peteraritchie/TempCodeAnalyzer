@@ -30,7 +30,7 @@ jobs:
         git tag ${{ steps.tag-name.value }}
         git push origin ${{ steps.tag-name.value }}
     - name: release
-      uses: actions/release-action@v1
+      uses: ncipollo/release-action@v1
       with:
         artifacts: "*.nupkg"
         draft: true
