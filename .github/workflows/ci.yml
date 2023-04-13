@@ -16,7 +16,7 @@ jobs:
     needs: ci
     runs-on: ubuntu-latest
     steps:
-    - name: do something
+    - name: do something with ${{ needs.ci.outputs.version }}
       run: echo "version ${{ needs.ci.outputs.version }} built."
     - uses: actions/download-artifact@v3
       with:
