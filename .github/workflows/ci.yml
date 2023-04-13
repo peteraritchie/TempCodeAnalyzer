@@ -25,14 +25,14 @@ jobs:
     - name: get tag name
       id: tag-name
       run: echo "value=v${{ needs.ci.outputs.version }}" >> $GITHUB_OUTPUT
-    - name: tag (${{ steps.tag-name.value }})
+    - name: tag (${{ steps.tag-name.outputs.value }})
       run: |
-        git tag ${{ steps.tag-name.value }}
-        git push origin ${{ steps.tag-name.value }}
+        git tag ${{ steps.tag-name.outputs.value }}
+        git push origin ${{ steps.tag-name.outputs.value }}
     - name: release
       uses: ncipollo/release-action@v1
       with:
         artifacts: "*.nupkg"
         draft: true
-        tag: ${{ steps.tag-name.value }}
-        body: release ${{ steps.tag-name.value }}
+        tag: ${{ steps.tag-name.outputs.value }}
+        body: release ${{ steps.tag-name.outputs.value }}
