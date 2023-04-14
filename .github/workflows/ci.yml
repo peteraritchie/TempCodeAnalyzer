@@ -34,11 +34,7 @@ jobs:
     - name: draft release
       uses: ncipollo/release-action@v1
       with:
-        draft: true
+        artifacts: "*.nupkg"
+        draft: false
         tag: ${{ steps.tag-name.outputs.value }}
         body: release ${{ steps.tag-name.outputs.value }}
-    - name: publish release
-      uses: ncipollo/release-action@v1
-      with:
-        artifacts: "*.nupkg"
-        tag: ${{ steps.tag-name.outputs.value }}
