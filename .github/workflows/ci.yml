@@ -46,6 +46,6 @@ jobs:
     - name: vsix version
       uses: Mudlet/xmlstarlet-action@v1.1
       with:
-        args: ed -u '/PackageManifest/Metadata/Identity/@Version' -v '${{ needs.ci.outputs.version }}'' src/source.extension.vsixmanifest
+        args: ed -u '/PackageManifest/Metadata/Identity/@Version' -v '${{ needs.ci.outputs.version }}' src/source.extension.vsixmanifest
     - name: log updated vsixmanifest
       run: cat src/source.extension.vsixmanifest
