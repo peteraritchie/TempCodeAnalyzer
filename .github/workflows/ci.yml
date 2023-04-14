@@ -42,10 +42,10 @@ jobs:
     - name: log ${{ steps.publish-release.outputs.id}}
       run: echo ${{ steps.publish-release.outputs.id}}
     - name: log initial vsixmanifest
-      run: cat src/src/source.extension.vsixmanifest
+      run: cat src/source.extension.vsixmanifest
     - name: vsix version
       uses: Mudlet/xmlstarlet-action@v1.1
       with:
         args: edit --update "/PackageManifest/Metadata/Identity/@Version" --value "${{ needs.ci.outputs.version }}" src/source.extension.vsixmanifest
     - name: log updated vsixmanifest
-      run: cat src/src/source.extension.vsixmanifest
+      run: cat src/source.extension.vsixmanifest
