@@ -31,23 +31,13 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: nupkg-${{ github.sha }}
-    - name: draft release
-      id: draft-release
-      uses: ncipollo/release-action@v1
-      with:
-        tag: ${{ steps.tag-name.outputs.value }}
-        draft: true
-        body: release ${{ steps.tag-name.outputs.value }}
     - name: publish release ${{ steps.draft-release.outputs.id}}
       id: publish-release
       uses: ncipollo/release-action@v1
       with:
         tag: ${{ steps.tag-name.outputs.value }}
-        allowUpdates: true
-        updateOnlyUnreleased: true
         artifacts: "*.nupkg"
         artifactErrorsFailBuild: true
-        omitBodyDuringUpdate: true
-        omitNameDuringUpdate: true
+        body: release ${{ steps.tag-name.outputs.value }}
     - name: log ${{ steps.publish-release.outputs.id}}
       run: echo ${{ steps.publish-release.outputs.id}}
