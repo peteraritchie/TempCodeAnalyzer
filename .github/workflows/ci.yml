@@ -32,9 +32,23 @@ jobs:
         git tag ${{ steps.tag-name.outputs.value }}
         git push origin ${{ steps.tag-name.outputs.value }}
     - name: draft release
+      id: draft-release
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "*.nupkg"
-        draft: false
+        draft: true
         tag: ${{ steps.tag-name.outputs.value }}
         body: release ${{ steps.tag-name.outputs.value }}
+    - name: publish release ${{ steps.draft-release.outputs.id}}
+      id: publish-release
+      uses: ncipollo/release-action@v1
+      with:
+        skipIfReleaseExists: true
+        updateOnlyUnreleased: true
+        allowUpdates: true
+        artifacts: "*.nupkg"
+        artifactErrorsFailBuild: true
+        omitBodyDuringUpdate: true
+        omitNameDuringUpdate: true
+        tag: ${{ steps.tag-name.outputs.value }}
+    - name: log ${{ steps.publish-release.outputs.id}}
+      run: echo ${{ steps.publish-release.outputs.id}}
