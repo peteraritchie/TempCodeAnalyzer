@@ -47,7 +47,7 @@ jobs:
       shell: pwsh
       run: |
         $xml = [xml](Get-Content -Path 'src/source.extension.vsixmanifest')
-        $xml.PackageManifest.Metadata.Identity.Version = ${{ needs.ci.outputs.version }}
+        $xml.PackageManifest.Metadata.Identity.Version = '${{ needs.ci.outputs.version }}'
         $xml.Save('src/source.extension.vsixmanifest')
     # - name: vsix version
     #   uses: Mudlet/xmlstarlet-action@v1.1
