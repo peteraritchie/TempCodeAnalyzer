@@ -1,11 +1,14 @@
 # TempCodeAnalyzer
 
 - [x] verisoning
+  - [x] build
+  - [x] packaging
+  - [x] vsix
 - [x] build
 - [x] unit test
 - [x] packaging
 - [x] packaging artifact
-- [ ] release ([draft a release](https://github.com/actions/create-release0, update release, upload asset)
+- [x] release ([draft a release](https://github.com/actions/create-release0, update release, upload asset)
 - [ ] delivery?*
 - [ ] acceptance*
 - [ ] publshing ([release](https://github.com/marketplace/actions/publish-a-release), packages, [vsix](https://github.com/cezarypiatek/VsixPublisherAction/blob/main/src/main.ts))
